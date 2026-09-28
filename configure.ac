@@ -829,6 +829,12 @@ PKG_CHECK_MODULES([STIRSHAKEN], [stirshaken],[
 		AM_CONDITIONAL([HAVE_STIRSHAKEN],[true])],[
 		AC_MSG_RESULT([no]); AM_CONDITIONAL([HAVE_STIRSHAKEN],[false])])
 
+PKG_CHECK_MODULES([NATS], [libnats >= 2.0],[
+		AM_CONDITIONAL([HAVE_NATS],[true])],[
+		PKG_CHECK_MODULES([NATS], [nats >= 2.0],[
+			AM_CONDITIONAL([HAVE_NATS],[true])],[
+			AC_MSG_RESULT([no]); AM_CONDITIONAL([HAVE_NATS],[false])])])
+
 AC_CHECK_LIB(apr-1, apr_pool_mutex_set, use_system_apr=yes, use_system_apr=no)
 AM_CONDITIONAL([SYSTEM_APR],[test "${use_system_apr}" = "yes"])
 
@@ -2121,6 +2127,7 @@ AC_CONFIG_FILES([Makefile
 		src/mod/event_handlers/mod_erlang_event/Makefile
 		src/mod/event_handlers/mod_event_multicast/Makefile
 		src/mod/event_handlers/mod_event_socket/Makefile
+		src/mod/event_handlers/mod_nats/Makefile
 		src/mod/event_handlers/mod_event_test/Makefile
 		src/mod/event_handlers/mod_fail2ban/Makefile
 		src/mod/event_handlers/mod_format_cdr/Makefile
