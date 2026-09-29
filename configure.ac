@@ -829,9 +829,9 @@ PKG_CHECK_MODULES([STIRSHAKEN], [stirshaken],[
 		AM_CONDITIONAL([HAVE_STIRSHAKEN],[true])],[
 		AC_MSG_RESULT([no]); AM_CONDITIONAL([HAVE_STIRSHAKEN],[false])])
 
-PKG_CHECK_MODULES([NATS], [libnats >= 2.0],[
+PKG_CHECK_MODULES([NATS], [libnats >= 3.0],[
 		AM_CONDITIONAL([HAVE_NATS],[true])],[
-		PKG_CHECK_MODULES([NATS], [nats >= 2.0],[
+		PKG_CHECK_MODULES([NATS], [nats >= 3.0],[
 			AM_CONDITIONAL([HAVE_NATS],[true])],[
 			AC_MSG_RESULT([no]); AM_CONDITIONAL([HAVE_NATS],[false])])])
 
